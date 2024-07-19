@@ -1,8 +1,14 @@
 import express from 'express'
+import cors from 'cors' // Importar o pacote CORS
 import { prismaClient } from './database'
 
 const app = express()
 app.use(express.json())
+
+// Configurar o middleware CORS
+app.use(cors({
+  origin: 'http://localhost:3000', // Permite requisições apenas do frontend rodando na porta 3000
+}))
 
 const port = process.env.PORT ?? 4000
 
